@@ -1,13 +1,17 @@
-/* Luxury Boutique Aesthetic Substrate - Zown Nexus */
+/* 
+ * ZOWN NEXUS: Digital Atelier - Aesthetic Substrate
+ * Implementation of v2.3.0 Luxury Boutique design tokens.
+ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap');
 
 :root {
   --boutique-gold: #d4af37;
+  --boutique-gold-muted: rgba(212, 175, 55, 0.2);
   --boutique-navy: #020617;
-  --boutique-teal: #397789;
   --boutique-bg: #000000;
   --luxury-white: #f8fafc;
+  --transition-heavy: 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .font-boutique-serif {
@@ -18,17 +22,11 @@
   font-family: 'Cinzel', serif;
 }
 
-/* Cinematic Transitions */
-.luxury-fade-in {
-  animation: luxuryFade 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+.font-boutique-sans {
+  font-family: 'Inter', sans-serif;
 }
 
-@keyframes luxuryFade {
-  from { opacity: 0; transform: translateY(10px); letter-spacing: 0.1em; }
-  to { opacity: 1; transform: translateY(0); letter-spacing: normal; }
-}
-
-/* Background Grain Texture */
+/* Background Grain Texture Module */
 .boutique-grain {
   position: relative;
 }
@@ -44,10 +42,10 @@
   opacity: 0.04;
   pointer-events: none;
   z-index: 100;
-  animation: grain 8s steps(10) infinite;
+  animation: grain-shift 8s steps(10) infinite;
 }
 
-@keyframes grain {
+@keyframes grain-shift {
   0%, 100% { transform:translate(0, 0) }
   10% { transform:translate(-5%, -10%) }
   20% { transform:translate(-15%, 5%) }
@@ -60,11 +58,32 @@
   90% { transform:translate(-10%, 10%) }
 }
 
-.luxury-whitespace {
-  padding: clamp(2rem, 8vw, 8rem);
+/* Cinematic Load Module */
+.luxury-fade-in {
+  animation: luxury-reveal var(--transition-heavy) forwards;
+}
+
+@keyframes luxury-reveal {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+    letter-spacing: 0.2em; 
+    filter: blur(5px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+    letter-spacing: normal;
+    filter: blur(0);
+  }
+}
+
+/* Whitespace & Utility */
+.luxury-padding {
+  padding: clamp(2rem, 10vw, 10rem);
 }
 
 .high-contrast-gold {
   color: var(--boutique-gold);
-  border-color: rgba(212, 175, 55, 0.2);
+  border-color: var(--boutique-gold-muted);
 }
