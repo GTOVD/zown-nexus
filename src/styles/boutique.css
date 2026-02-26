@@ -63,3 +63,8 @@
 .luxury-whitespace {
   padding: clamp(2rem, 8vw, 8rem);
 }
+
+.high-contrast-gold {
+  color: var(--boutique-gold);
+  border-color: rgba(212, 175, 55, 0.2);
+}
